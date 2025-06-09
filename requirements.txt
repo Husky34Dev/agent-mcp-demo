@@ -1,1 +1,4 @@
-fastapi\nuvicorn\nfastapi-mcp\npydantic
+fastapi
+uvicorn
+fastapi-mcp
+pydantic
