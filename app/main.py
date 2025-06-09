@@ -1,15 +1,13 @@
 from fastapi import FastAPI
 from fastapi_mcp import FastApiMCP
-from app.extractor import extraer_datos
-from app.models import MensajeInput, ResultadoFinal
+from app.tools import get_info_from_message
 
 app = FastAPI()
 
-@app.post("/extraer", response_model=ResultadoFinal, operation_id="extraer_datos")
-def endpoint_extraer(mensaje: MensajeInput):
-    return extraer_datos(mensaje)
+@app.post("/mcp")
+async def mcp_handler(request: dict):
+    return await get_info_from_message(request)
 
-# Activamos MCP al final
-mcp = FastApiMCP(app, name="Extractor", description="Extrae intención desde lenguaje natural")
+mcp = FastApiMCP(app, name="Chatbot Agente", description="Agente con extracción + acción")
 mcp.mount()
 mcp.setup_server()

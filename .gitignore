@@ -1,5 +1,1 @@
-__pycache__/
-*.pyc
-*.db
-.venv/
-.env
+__pycache__/\n*.pyc\n*.db\n.venv/
